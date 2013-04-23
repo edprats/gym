@@ -1,0 +1,15 @@
+<%= form_for [@exercise, @exercise_set] do |f| %>
+  <div class="weight">
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+  </div>
+
+  <div class="reps">
+    <%= f.label :reps %><br />
+    <%= f.text_field :reps %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
