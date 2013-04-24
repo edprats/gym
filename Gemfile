@@ -42,4 +42,10 @@ gem 'bootstrap-sass'
 # To use debugger
 # gem 'debugger'
 
-gem 'pg'
+group :test, :development do
+	gem 'sqlite3'
+end
+
+group :production do
+	gem "pg"
+end
