@@ -1,31 +1,29 @@
 
 <header>
-	<h1><%= @workout.name %></h1>
+	<h1><%= @workout.name %> <i class="icon-github"></i></h1>
 </header>	
-
-<%= @last_updated_at %>
 
 <% @workout.exercises.each_with_index do |exercise, indexNum| %>
 
-  <div class="accordion" id="<%= indexNum.to_s + 'B'%>">
+  <div class="accordion container" id="<%= indexNum.to_s + 'B'%>">
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#<%= indexNum.to_s + 'B'%>" href="#<%= indexNum.to_s + 'A'%>">
-          <%= exercise.name %>
+        <a class="accordion-toggle exercise-name" data-toggle="collapse" data-parent="#<%= indexNum.to_s + 'B'%>" href="#<%= indexNum.to_s + 'A'%>">
+          <%= exercise.name.to_s + " id:" + exercise.id.to_s %>
         </a>
       </div>
-       <div id="<%= indexNum.to_s + 'A'%>" class="accordion-body collapse in">
+       <div id="<%= indexNum.to_s + 'A'%>" class="accordion-body collapse">
         <div class="accordion-inner">
-          <div class="accordion" id="accordion3">
+          <div class="accordion" id="<%= indexNum.to_s + '3'%>">
 
 			      <% exercise.grouped_exercise_sets.each do |day, sets| %>
 	            <div class="accordion-group">
 	              <div class="accordion-heading">
-	                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse3">
+	                <a class="accordion-toggle date" data-toggle="collapse" data-parent="#<%= indexNum.to_s + '3'%>" href="#<%= indexNum.to_s + 'C3'%>">
 	                  <%= day %>
 	                </a>
 	              </div>
-	              <div id="collapse3" class="accordion-body collapse in">
+	              <div id="<%= indexNum.to_s + 'C3'%>" class="accordion-body collapse exercise-sets">
 		              <% sets.each do |set| %>
 	                  <div class="accordion-inner">
 	                    <%= "Weight: " + set.weight.to_s + " , Reps: " + set.reps.to_s %>
@@ -35,28 +33,28 @@
 	              </div>
 	            </div>
 	          <% end %>
-            <div class="accordion-group">
+            <div class="accordion-group new-set">
               <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse4">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#<%= indexNum.to_s + '3'%>" href="#<%= indexNum.to_s + 'C4'%>">
                   Add a new set
                 </a>
               </div>
-              <div id="collapse4" class="accordion-body collapse">
+              <div id="<%= indexNum.to_s + 'C4'%>" class="accordion-body collapse">
                 <div class="accordion-inner">
                   <%= form_for [exercise, exercise.exercise_sets.build] do |f| %>
 
                     <div class="weight">
-                      <%= f.label :weight %><br />
+                      <%= f.label :weight %>
                       <%= f.text_field :weight %>
                     </div>
 
                     <div class="reps">
-                      <%= f.label :reps %><br />
+                      <%= f.label :reps %>
                       <%= f.text_field :reps %>
                     </div>
 
                     <div class="actions">
-                      <%= f.submit %>
+                      <%= f.submit 'Add set', :class => 'btn'%>
                     </div>
                   <% end %>
                 </div>
@@ -69,6 +67,6 @@
   </div>
 <% end %>
 
-<%= link_to "Add exercise to this day", new_workout_exercise_path(@workout.id), {:class => "new-exercise"} %>
+<%= link_to "Add new exercise", new_workout_exercise_path(@workout.id), {:class => "new-exercise clearfix"} %>
 
-<%= link_to 'Home', workouts_path %>
+<%= link_to 'Home', workouts_path, {:class => "home"}  %>
