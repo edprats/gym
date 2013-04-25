@@ -18,8 +18,15 @@ body { padding-top: 60px; }
 
 html {
   height: 100%;
-  min-height: 2000px;
-  background: #ffe934;
+background: rgb(255,48,25); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,48,25,1) 0%, rgba(207,4,4,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,48,25,1)), color-stop(100%,rgba(207,4,4,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,48,25,1) 0%,rgba(207,4,4,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,48,25,1) 0%,rgba(207,4,4,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,48,25,1) 0%,rgba(207,4,4,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(255,48,25,1) 0%,rgba(207,4,4,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+  min-height: 480px;
 }
 
 body {
@@ -64,6 +71,7 @@ header span a {
 
 header h1 {
 	color: white;
+	text-shadow: 0px -1px 4px rgba(0, 0, 0, 0.96);
 }
 
 .home {
@@ -109,7 +117,8 @@ header h1 {
 	}
 }
 
-.accordion.container:active {
+.index:active, .accordion.container:active {
+	text-decoration: none;
 	background-color: #e5e4e6;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(229, 228, 230)), to(rgb(254, 253, 255)));
 	background-image: -webkit-linear-gradient(top, rgb(229, 228, 230), rgb(254, 253, 255));
@@ -121,7 +130,7 @@ header h1 {
 	box-shadow: inset 0px 2px 3px rgba(0,0,0,0.46);
 }
 
-.accordion a:hover {
+.index a:hover, .accordion a:hover {
 	text-decoration: none;
 }
 
@@ -139,10 +148,15 @@ header h1 {
 	margin: auto;
 	margin-bottom: 30px;
 	border-radius: 5px;
-	font-size: 1.75em;
+	font-size: 1.5em;
 	text-align: center;
 }
 
+.exercise-sets .accordion-inner a {
+	color: #c83c28;
+	font-size: .65em;
+	text-align: right;
+}
 
 .date {
 	color: #37495d;
@@ -153,6 +167,7 @@ header h1 {
 .exercise-sets {
 	font-size: 1.5em;
 	margin-left: 1.25em;
+	text-align: right;
 }
 
 .new-set {
@@ -174,6 +189,10 @@ label {
 	margin-bottom: .75em;
 }
 
+a.destroy {
+	color: #ce3f2a;
+}
+
 .btn {
 	color: #524212;
 	font-size: .75em;
@@ -186,4 +205,8 @@ label {
 	background-image: -ms-linear-gradient(top, rgb(254, 231, 125), rgb(242, 189, 23));
 	background-image: linear-gradient(top, rgb(254, 231, 125), rgb(242, 189, 23));
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#fee77d', EndColorStr='#f2bd17');
+
+	&:hover {
+		background-position: 0px 0px;
+	}
 }

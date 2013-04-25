@@ -9,7 +9,7 @@
     <div class="accordion-group">
       <div class="accordion-heading">
         <a class="accordion-toggle exercise-name" data-toggle="collapse" data-parent="#<%= indexNum.to_s + 'B'%>" href="#<%= indexNum.to_s + 'A'%>">
-          <%= exercise.name.to_s + " id:" + exercise.id.to_s %>
+          <%= exercise.name.to_s %>
         </a>
       </div>
        <div id="<%= indexNum.to_s + 'A'%>" class="accordion-body collapse">
@@ -27,7 +27,7 @@
 		              <% sets.each do |set| %>
 	                  <div class="accordion-inner">
 	                    <%= "Weight: " + set.weight.to_s + " , Reps: " + set.reps.to_s %>
-	                    <%= link_to 'Destroy', [exercise, set], method: :delete, data: { confirm: 'Are you sure?' } %>
+	                    <%= link_to 'Delete', [exercise, set], method: :delete, data: { confirm: 'Are you sure?' } %>
 	                  </div>
 		             	<% end %>
 	              </div>
